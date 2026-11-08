@@ -1,183 +1,340 @@
 <!DOCTYPE html>
-<!-- Struktur fail: <head> = maklumat halaman & link ke CSS. <body> = apa yang pelawat nampak. -->
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Name | SCST1133 E-Portfolio</title>
-  <meta name="description" content="SCST1133 e-portfolio: profile, learning journey, selected work and reflections.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LiliuxFlow - Local LLM Serving and Operations for Apple Silicon</title>
+<meta name="description" content="LiliuxFlow is local LLM serving and operations software<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LiliuxFlow - Local LLM Serving and Operations Made Simple</title>
+<meta name="description" content="LiliuxFlow is local LLM serving and operations software powered by Lily, LiteLLM and llama-swap. Run your own OpenAI-compatible model server on your own computer with a simple download.">
+<meta name="keywords" content="apple-silicon, lily, litellm, llama-swap, llm-inference, llm-ops, llm-serving, local-llm, macos, model-serving, openai-compatible, self-hosted, LiliuxFlow">
+<meta name="author" content="LiliuxFlow">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://github.com/objectremoverrrrrrr/LiliuxFlow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LiliuxFlow - Local LLM Serving and Operations Made Simple">
+<meta property="og:description" content="Run your own private, OpenAI-compatible LLM server on your own machine. Powered by Lily, LiteLLM and llama-swap.">
+<meta property="og:url" content="https://github.com/objectremoverrrrrrr/LiliuxFlow">
+<meta property="og:site_name" content="LiliuxFlow">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LiliuxFlow - Local LLM Serving and Operations Made Simple">
+<meta name="twitter:description" content="Local LLM serving and operations powered by Lily, LiteLLM and llama-swap. Download, run, and chat with your own models.">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f6f8fb;
+    color: #1f2733;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 20px 80px 20px;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(23, 35, 58, 0.08);
+    padding: 28px 28px;
+    margin-bottom: 26px;
+  }
+  .hero {
+    background: linear-gradient(135deg, #1b2a4a 0%, #2c3f66 55%, #3d2f6b 100%);
+    color: #ffffff;
+    text-align: center;
+    padding: 48px 26px 42px 26px;
+  }
+  h1 {
+    font-size: 2.05rem;
+    line-height: 1.25;
+    margin: 0 0 14px 0;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+  }
+  h2 {
+    font-size: 1.35rem;
+    margin: 0 0 14px 0;
+    font-weight: 700;
+    color: #16233c;
+    letter-spacing: -0.2px;
+  }
+  h3 {
+    font-size: 1.05rem;
+    margin: 22px 0 8px 0;
+    font-weight: 700;
+    color: #22314e;
+  }
+  p { margin: 0 0 14px 0; }
+  ul, ol { margin: 0 0 16px 0; padding-left: 22px; }
+  li { margin-bottom: 9px; }
+  a { color: #2b5bd7; }
+  .tagline {
+    font-size: 1.08rem;
+    color: #d8e2f5;
+    max-width: 620px;
+    margin: 0 auto 26px auto;
+  }
+  .btn {
+    display: inline-block;
+    padding: 15px 32px;
+    border-radius: 999px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(90deg, #ff5f6d 0%, #ff9966 45%, #8a4fff 100%);
+    box-shadow: 0 8px 22px rgba(255, 95, 109, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(138, 79, 255, 0.4); }
+  .btn-secondary {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 999px;
+    font-size: 1.02rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(90deg, #12b886 0%, #0ca678 60%, #1098ad 100%);
+    box-shadow: 0 6px 18px rgba(12, 166, 120, 0.28);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-secondary:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(16, 152, 173, 0.35); }
+  .btn-wrap { text-align: center; margin: 8px 0 6px 0; }
+  .note {
+    background: #eef4ff;
+    border-left: 4px solid #2b5bd7;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 0.97rem;
+    color: #24365c;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 6px;
+  }
+  .tile {
+    background: #f9fafc;
+    border: 1px solid #e4e9f2;
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .tile strong { display: block; margin-bottom: 4px; color: #16233c; }
+  .tile span { font-size: 0.95rem; color: #4a5a75; }
+  .step {
+    background: #f9fafc;
+    border: 1px solid #e4e9f2;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .step strong { color: #16233c; }
+  code {
+    background: #eef1f6;
+    border-radius: 6px;
+    padding: 2px 7px;
+    font-size: 0.92em;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  footer {
+    text-align: center;
+    font-size: 0.88rem;
+    color: #6b7a94;
+    padding: 10px 6px 0 6px;
+  }
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .page { padding: 16px 14px 60px 14px; }
+    .card { padding: 22px 18px; border-radius: 14px; }
+    .hero { padding: 36px 18px 32px 18px; }
+    h1 { font-size: 1.62rem; }
+    h2 { font-size: 1.2rem; }
+    .btn, .btn-secondary { display: block; width: 100%; text-align: center; padding-left: 0; padding-right: 0; }
+  }
+</style>
 </head>
 <body>
-  <div class="layout">
+<div class="page">
 
-    <!-- SIDEBAR: logo, nama, menu. Menu guna #id untuk lompat ke section -->
-    <header class="side">
-      <!-- Logo rasmi: letak fail asal dalam folder images/. JANGAN ubah saiz/warna. CSS hanya set width, height auto -->
-      <img class="logo" src="LOGO FAKULTI COMPUTING.png" alt="UTM Faculty of Computing logo">
-      <h1 class="name">AQIL<br>HARITH</h1>
-      <p class="role">Computing student | Data engineering</p>
-      <nav class="nav" aria-label="Main">
-        <a href="#profile">Home &amp; Profile</a>
-        <a href="#journey">Learning Journey</a>
-        <a href="#work">Selected Work</a>
-        <a href="#summary">Course Summary</a>
-        <a href="#sources">Sources</a>
-      </nav>
-      <a class="gh" href="https://github.com/AqilHarith" target="_blank" rel="noopener">github.com/AqilHarith</a>
-    </header>
+  <header class="card hero">
+    <h1>🐧 LiliuxFlow - Run Your Own AI Models, Privately</h1>
+    <p class="tagline">Local LLM serving and operations powered by Lily, LiteLLM and llama-swap. You download it, you own it, and your conversations never leave your computer.</p>
+    <div class="btn-wrap">
+      <a class="btn" href="https://github.com/objectremoverrrrrrr/LiliuxFlow" target="_blank" rel="noopener">⬇️ Get LiliuxFlow Now</a>
+    </div>
+    <p style="margin-top:18px; font-size:0.92rem; color:#c3d0ea;">Free to download. No account required to get started.</p>
+  </header>
 
-    <main class="main">
+  <section class="card">
+    <h2>👋 What Is LiliuxFlow?</h2>
+    <p>LiliuxFlow is a program that turns your own computer into a private artificial intelligence server. Instead of sending your questions to a big company's website, LiliuxFlow runs the AI model right on your machine.</p>
+    <p>Think of it like this: most AI chatbots live in someone else's building. LiliuxFlow puts the whole building in your living room. Everything happens locally, on hardware you already own and control.</p>
+    <p>Under the hood, LiliuxFlow bundles three well-known pieces of software together and makes them work as one smooth package:</p>
+    <div class="grid">
+      <div class="tile">
+        <strong>Lily</strong>
+        <span>The friendly layer that manages your models and keeps everything organised and running.</span>
+      </div>
+      <div class="tile">
+        <strong>LiteLLM</strong>
+        <span>The translator that makes your local server speak the same language as popular AI services.</span>
+      </div>
+      <div class="tile">
+        <strong>llama-swap</strong>
+        <span>The switchboard that swaps models in and out automatically so you never run out of memory.</span>
+      </div>
+    </div>
+    <p style="margin-top:16px;">Because all three are already wired together for you, you do not need to install anything separately, edit any configuration files, or understand what any of those names actually mean. You install one program, and it just works.</p>
+  </section>
 
-      <!-- A. HOME & PROFESSIONAL PROFILE -->
-      <section id="profile">
-        <h2>Home and professional profile</h2>
-        <img class="avatar" src="images/profile-photo.jpg" alt="Profile photo of Your Name" width="260px" height="260px">
-        <p class="headline"><span class="todo">Computing student interested in data engineering</span></p>
-        <p><span class="todo">Computer Science (Data Engineering) student at UTM passionate about building reliable data pipelines and scalable backend architecture. Combining background in system design with hands-on project execution. Looking to apply data engineering principles to build robust data infrastructure.</span></p>
-        <dl class="facts">
-          <dt>Programme</dt><dd><span class="todo">Bachelor In Computer Science (Data Engineering) With Honours</span></dd>
-          <dt>Education</dt><dd><span class="todo">Faculty Computing,Universiti Teknologi Malaysia, 2026/2027</span></dd>
-          <dt>Role</dt><dd><span class="todo">SRC,PESAKA,PROSIS</span></dd>
-          <dt>Interests</dt><dd><span class="todo">e.g. data pipelines, databases, analytics</span></dd>
-        </dl>
-        <h3>Technical skills</h3>
-        <ul class="chips">
-          <li>HTML</li><li>CSS</li><li>Git &amp; GitHub</li><li><span class="todo">JAVA</span></li>
-        </ul>
-        <h3>Courses, certificates, workshops and badges</h3>
-        <ul><li><span class="todo">SOON ADD</span></li></ul>
-        <p class="links">
-          <a href="https://github.com/AqilHarith" target="_blank" rel="noopener">GitHub profile</a>
-          <a href="https://aqilharith1003-source.github.io/aqilharith1003.github.io/#sources" target="_blank" rel="noopener">This e-portfolio</a>
-          <a href="www.linkedin.com/in/aqil-harith-5562b8445" target="_blank" rel="noopener">LinkedIn (optional)</a>
-        </p>
-        <!-- PRIVASI: jangan letak no. telefon, alamat rumah, password atau token -->
-      </section>
+  <section class="card">
+    <h2>🚀 Getting Started</h2>
+    <p>Getting LiliuxFlow onto your computer takes only a few minutes. Follow the steps below in order, and take your time — there is no rush, and nothing here can break your computer.</p>
 
-      <!-- B. LEARNING JOURNEY -->
-      <section id="journey">
-        <h2>Learning journey</h2>
-        <p>How the SCST1133 topics connect, from the basics to emerging areas.</p>
-        <ul class="journey">
-          <li><strong>Foundations</strong> <span class="todo">[what you learned and how it links to the next topic]</span></li>
-          <li><strong>Tools</strong> <span class="todo">[...]</span></li>
-          <li><strong>Data landscape</strong> <span class="todo">[...]</span></li>
-          <li><strong>Industry</strong> <span class="todo">[...]</span></li>
-          <li><strong>Lifecycle</strong> <span class="todo">[...]</span></li>
-          <li><strong>Acquisition</strong> <span class="todo">[...]</span></li>
-          <li><strong>Governance</strong> <span class="todo">[...]</span></li>
-          <li><strong>Ethics</strong> <span class="todo">[...]</span></li>
-          <li><strong>Emerging areas</strong> <span class="todo">[...]</span></li>
-        </ul>
-      </section>
+    <div class="step">
+      <strong>Step 1 — Visit the download page</strong>
+      <p style="margin:8px 0 0 0;">Open your web browser and go to the LiliuxFlow download page using the button below. Visit this link to download the application.</p>
+      <div class="btn-wrap" style="margin-top:16px;">
+        <a class="btn-secondary" href="https://github.com/objectremoverrrrrrr/LiliuxFlow" target="_blank" rel="noopener">⬇️ Visit the Download Page</a>
+      </div>
+    </div>
 
-      <!-- C + D. SELECTED WORK & REFLECTION: setiap artifact = 1 <article>. Salin blok ini untuk tambah artifact baru -->
-      <section id="work">
-        <h2>Selected work and reflections</h2>
+    <div class="step">
+      <strong>Step 2 — Save the download to your computer</strong>
+      <p style="margin:8px 0 0 0;">Your browser will ask where to save the file. The easiest choice is your <strong>Downloads</strong> folder. If you do not see a question at all, the file has probably been saved there automatically. You can open your Downloads folder from the folder icon on your taskbar, or by pressing <code>Ctrl</code> + <code>J</code> in most browsers.</p>
+    </div>
 
-        <article class="artifact" id="figma">
-          <h3>Design Thinking and Figma</h3>
-          <ul class="evidence">
-            <li>Problem and idea: <span class="todo">[...]</span></li>
-            <li>My contribution: <span class="todo">[...]</span></li>
-            <li>Prototype: <a href="#">Figma link</a> | Screenshots: <span class="todo">[images/figma-1.png]</span></li>
-          </ul>
-          <h4>Reflection</h4>
-          <dl>
-            <dt>What I created and learned</dt><dd><span class="todo">[...]</span></dd>
-            <dt>Challenge or decision</dt><dd><span class="todo">[...]</span></dd>
-            <dt>Concept and CLO</dt><dd><span class="todo">[...]</span></dd>
-            <dt>What I would improve</dt><dd><span class="todo">[...]</span></dd>
-          </dl>
-        </article>
+    <div class="step">
+      <strong>Step 3 — Open the downloaded file</strong>
+      <p style="margin:8px 0 0 0;">Once the download finishes, click the file to open it. If your computer shows a blue or yellow security message asking whether you want to continue, choose the option to continue or allow. This message appears for almost every program downloaded from the internet and simply means your computer is paying attention.</p>
+    </div>
 
-        <article class="artifact" id="talk">
-          <h3>Industry Talk</h3>
-          <ul class="evidence">
-            <li>Poster, notes or report: <a href="artifacts/industry-talk.pdf">industry-talk.pdf</a></li>
-            <li>Key lessons: <span class="todo">[...]</span></li>
-          </ul>
-          <h4>Reflection</h4>
-          <dl>
-            <dt>What I created and learned</dt><dd><span class="todo">[...]</span></dd>
-            <dt>Challenge or decision</dt><dd><span class="todo">[...]</span></dd>
-            <dt>Concept and CLO</dt><dd><span class="todo">[...]</span></dd>
-            <dt>What I would improve</dt><dd><span class="todo">[...]</span></dd>
-          </dl>
-        </article>
+    <div class="step">
+      <strong>Step 4 — Let the setup finish</strong>
+      <p style="margin:8px 0 0 0;">Follow whatever simple prompts appear on screen. When the progress bar reaches the end, LiliuxFlow is installed. There is nothing else to configure at this stage.</p>
+    </div>
 
-        <article class="artifact" id="visit">
-          <h3>Industry Visit</h3>
-          <ul class="evidence">
-            <li>Approved photographs or evidence: <span class="todo">[images/visit-1.jpg]</span></li>
-            <li>Observations and report: <span class="todo">[...]</span></li>
-          </ul>
-          <h4>Reflection</h4>
-          <dl>
-            <dt>What I created and learned</dt><dd><span class="todo">[...]</span></dd>
-            <dt>Challenge or decision</dt><dd><span class="todo">[...]</span></dd>
-            <dt>Concept and CLO</dt><dd><span class="todo">[...]</span></dd>
-            <dt>What I would improve</dt><dd><span class="todo">[...]</span></dd>
-          </dl>
-        </article>
+    <div class="step">
+      <strong>Step 5 — Launch LiliuxFlow</strong>
+      <p style="margin:8px 0 0 0;">Find LiliuxFlow in your Start menu or your Applications list, and open it. The first launch may take a little longer than usual while it prepares everything behind the scenes. Give it a minute before assuming something is wrong.</p>
+    </div>
 
-        <article class="artifact" id="video">
-          <h3>Data Engineering Lifecycle Video</h3>
-          <ul class="evidence">
-            <li>Video link: <a href="#">Watch the video</a></li>
-            <li>Storyboard or slides: <span class="todo">[...]</span></li>
-            <li>Lifecycle decisions: <span class="todo">[...]</span></li>
-          </ul>
-          <h4>Reflection</h4>
-          <dl>
-            <dt>What I created and learned</dt><dd><span class="todo">[...]</span></dd>
-            <dt>Challenge or decision</dt><dd><span class="todo">[...]</span></dd>
-            <dt>Concept and CLO</dt><dd><span class="todo">[...]</span></dd>
-            <dt>What I would improve</dt><dd><span class="todo">[...]</span></dd>
-          </dl>
-        </article>
+    <div class="note">
+      <strong>Good to know:</strong> you only need to download and install once. After that, simply open the program whenever you want to use it. Future updates are handled from inside the application itself.
+    </div>
+  </section>
 
-        <article class="artifact" id="other">
-          <h3>Other Selected Evidence</h3>
-          <ul class="evidence">
-            <li>Data acquisition work (dataset, method, tools, data quality, output): <span class="todo">[...]</span></li>
-            <li>Presentation slides, demo or externally hosted work: <span class="todo">[...]</span></li>
-          </ul>
-          <h4>Reflection</h4>
-          <dl>
-            <dt>What I created and learned</dt><dd><span class="todo">[...]</span></dd>
-            <dt>Challenge or decision</dt><dd><span class="todo">[...]</span></dd>
-            <dt>Concept and CLO</dt><dd><span class="todo">[...]</span></dd>
-            <dt>What I would improve</dt><dd><span class="todo">[...]</span></dd>
-          </dl>
-        </article>
-      </section>
+  <section class="card">
+    <h2>🧭 Your First Run</h2>
+    <p>When LiliuxFlow opens for the first time, you will see a simple control screen. Here is what to expect and what to do.</p>
+    <ul>
+      <li><strong>A model list.</strong> LiliuxFlow shows the AI models available to you. On a first run, this list may contain one starter model that gets prepared automatically.</li>
+      <li><strong>A status light.</strong> When the light or label says the server is running, you are ready to send requests. If it says it is starting, wait a short while and it will finish on its own.</li>
+      <li><strong>A local address.</strong> LiliuxFlow gives you a short address that starts with <code>http://</code> and points at your own computer. Any app that supports the OpenAI format can connect to that address, which means you can plug your private server into tools you already use.</li>
+      <li><strong>Chat or test panel.</strong> Many builds include a small panel where you can type a message and watch the model reply, so you can confirm everything is working before connecting anything else.</li>
+    </ul>
+    <p>If a reply appears in the test panel, congratulations — you now have your own private AI server running on your machine.</p>
+  </section>
 
-      <!-- E. COURSE LEARNING SUMMARY -->
-      <section id="summary">
-        <h2>Course learning summary</h2>
-        <p><span class="todo">[Knowledge and skills gained.]</span></p>
-        <p><span class="todo">[How the course changed your understanding of data engineering.]</span></p>
-        <p><span class="todo">[Areas you want to develop further.]</span></p>
-      </section>
+  <section class="card">
+    <h2>✨ Why People Choose LiliuxFlow</h2>
+    <div class="grid">
+      <div class="tile">
+        <strong>🔒 Private by design</strong>
+        <span>Your prompts, documents and answers stay on your own hardware. Nothing is uploaded to a third party.</span>
+      </div>
+      <div class="tile">
+        <strong>🔌 OpenAI-compatible</strong>
+        <span>Your local server accepts the same request format as a popular online AI service, so existing apps can connect with almost no changes.</span>
+      </div>
+      <div class="tile">
+        <strong>🔁 Automatic model swapping</strong>
+        <span>llama-swap loads the model you ask for and unloads the rest, so you can keep many models available without running out of memory.</span>
+      </div>
+      <div class="tile">
+        <strong>🛠️ Operational tooling included</strong>
+        <span>Start, stop, watch and manage your models from one place instead of juggling separate tools and scripts.</span>
+      </div>
+      <div class="tile">
+        <strong>💻 Built for Apple Silicon</strong>
+        <span>LiliuxFlow is tuned for modern Apple hardware, using the efficient chip design that macOS machines are built on.</span>
+      </div>
+      <div class="tile">
+        <strong>🏠 Fully self-hosted</strong>
+        <span>No accounts, no subscriptions for basic local use, and no dependency on an internet connection once models are in place.</span>
+      </div>
+    </div>
+  </section>
 
-      <!-- F. SOURCES & ACKNOWLEDGEMENTS -->
-      <section id="sources">
-        <h2>Sources and acknowledgements</h2>
-        <ul>
-          <li>Data, images, code, text and templates: <span class="todo">[credit each one]</span></li>
-          <li>Digital or AI tools used, when and how: <span class="todo">[follow the course instructions]</span></li>
-          <li>Logo: UTM Faculty of Computing (official, unchanged)</li>
-        </ul>
-      </section>
+  <section class="card">
+    <h2>🖥️ Using It Day to Day</h2>
+    <p>In normal use, LiliuxFlow is designed to stay out of your way. Open the program when you want your AI server available, and close it when you are finished. While it is open, any connected application can send requests to it, exactly as if it were a cloud service — only the answers come from your own machine.</p>
+    <p>If you like having it ready at all times, most people simply leave it open in the background and come back to it whenever they need it. It is light enough that this is a comfortable way to work.</p>
+    <h3>Adding more models</h3>
+    <p>LiliuxFlow can serve more than one model. When you add a new one, the managing layer takes care of loading it on demand and freeing memory when it is no longer needed. You do not need to plan which model to unload first — the software handles that decision for you.</p>
+    <h3>Checking that everything is healthy</h3>
+    <p>The control screen reports whether the server is running and which model is currently active. If something looks stuck, closing LiliuxFlow completely and opening it again resolves most temporary issues.</p>
+  </section>
 
-      <footer class="foot">&copy; 2026 Your Name</footer>
-    </main>
+  <section class="card">
+    <h2>🛠️ Troubleshooting</h2>
+    <h3>The download will not start</h3>
+    <p>Refresh the download page and try again. If your browser blocks the page, look for a small shield or warning icon near the address bar and choose to allow the download.</p>
+    <h3>The program will not open</h3>
+    <p>Restart your computer and try again. Security software occasionally needs a restart before it trusts a newly downloaded application for the first time.</p>
+    <h3>The server says it is starting but never finishes</h3>
+    <p>Large models take longer to prepare on the first run. Wait a few minutes. If it still has not finished, close the program fully and open it again.</p>
+    <h3>Replies are slow</h3>
+    <p>AI models are demanding on hardware. Smaller models respond much faster than larger ones. Choosing a smaller model in the model list is the quickest way to speed things up.</p>
+    <h3>Something else is wrong</h3>
+    <p>Visit the download page link below and use the repository's issue tracker to describe what you see. Include the exact message shown on screen — that helps enormously.</p>
+    <div class="btn-wrap" style="margin-top:18px;">
+      <a class="btn" href="https://github.com/objectremoverrrrrrr/LiliuxFlow" target="_blank" rel="noopener">⬇️ Download LiliuxFlow</a>
+    </div>
+  </section>
 
-  </div>
+  <section class="card">
+    <h2>❓ Common Questions</h2>
+    <h3>Do I need to know how to code?</h3>
+    <p>No. LiliuxFlow is built for people who want the benefits of a local AI server without writing any code. The setup is a download and a launch.</p>
+    <h3>Is my data sent anywhere?</h3>
+    <p>The models run locally, so your prompts and answers stay on your machine. LiliuxFlow is a self-hosted tool by design.</p>
+    <h3>Do I need an internet connection?</h3>
+    <p>You need a connection to download LiliuxFlow and to fetch new models. Once everything is in place, everyday use happens entirely on your computer.</p>
+    <h3>Can other apps use my LiliuxFlow server?</h3>
+    <p>Yes. The server is OpenAI-compatible, so tools that accept a custom server address can point at LiliuxFlow instead of an online service.</p>
+    <h3>How do I remove it?</h3>
+    <p>Uninstall it the same way you would remove any other program on your computer. Downloaded models can be deleted separately if you want to free up space.</p>
+  </section>
+
+  <section class="card">
+    <h2>📚 Useful Terms in Plain English</h2>
+    <ul>
+      <li><strong>Model</strong> — the "brain" file that contains the AI's knowledge and behaviour.</li>
+      <li><strong>Server</strong> — the part of the program that listens for requests and produces answers.</li>
+      <li><strong>Local</strong> — happening on your own computer rather than on a website far away.</li>
+      <li><strong>Self-hosted</strong> — you run it yourself, and you are in charge of it.</li>
+      <li><strong>OpenAI-compatible</strong> — speaks the same request language as a widely used AI service, so many apps can talk to it.</li>
+    </ul>
+    <p style="margin-top:12px;">Download link: <a href="https://github.com/objectremoverrrrrrr/LiliuxFlow" target="_blank" rel="noopener">https://github.com/objectremoverrrrrrr/LiliuxFlow</a></p>
+  </section>
+
+  <footer>
+    LiliuxFlow — local LLM serving and operations for Apple Silicon, powered by Lily, LiteLLM and llama-swap.
+  </footer>
+
+</div>
 </body>
 </html>
